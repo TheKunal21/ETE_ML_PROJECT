@@ -1,4 +1,6 @@
 flask
+matplotlib
+seaborn
 pandas 
 numpy
 scikit-learn
@@ -7,6 +9,7 @@ gunicorn
 xgboost
 catboost
 #-e .
+
 
 
 
