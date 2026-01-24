@@ -1,8 +1,8 @@
 flask
-gunicorn
 scikit-learn
 dill
 #-e .
+
 
 
 
