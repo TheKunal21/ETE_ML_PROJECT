@@ -1,1 +1,6 @@
 ETE machine learning project 
+
+''' you must add scikit-learn , XGboost , catboost , pandas , numpy and might be matplotlib and seaborn to Run this project,
+i am removing them because i am deploying this project on AWS free-tier and t3.micro instance is running out of
+ram because it just have 1 gib ram. 
+'''
