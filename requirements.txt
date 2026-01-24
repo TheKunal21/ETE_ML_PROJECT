@@ -5,9 +5,9 @@ ram because it just have 1 gib ram.
 flask
 gunicorn
 scikit-learn
-catboost
 dill
 #-e .
+
 
 
 
