@@ -45,6 +45,42 @@ ETE_ML_PROJECT/
 
 ---
 
+---
+
+## 🖥️ Deployment Notes
+
+This project can be deployed to cloud platforms such as AWS Elastic Beanstalk. **However, machine learning projects with libraries like CatBoost, XGBoost, and scikit-learn require significant RAM and disk space.**
+
+### ⚠️ Important: Instance Requirements
+
+- **Do NOT use small/free-tier instances (e.g., t2.micro, t3.micro) for deployment.**
+- These instances typically have only 1GB RAM, which is insufficient for installing, running, or training large ML models.
+- You may encounter errors such as "out of memory," failed package installations, or application crashes.
+
+### ✅ Recommended Instance Types
+
+- Use at least a **t3.medium** (4GB RAM) or higher for smooth deployment and inference.
+- For training or heavy inference, consider even larger instances.
+
+### 💡 Why Is This Necessary?
+
+- ML libraries (CatBoost, XGBoost, scikit-learn) are memory-intensive.
+- Model files and dependencies can be large.
+- The web server and Python environment also consume resources.
+
+### 📝 Deployment Steps (AWS Example)
+
+1. Prepare your `requirements.txt` and `Procfile` for Gunicorn.
+2. Select a suitable instance type (t3.medium or larger).
+3. Set Python version to 3.9+.
+4. Upload your project and deploy.
+
+---
+
+**Summary:**  
+If you use a micro instance, deployment will likely fail due to memory errors. Always choose an instance with enough RAM and disk space for ML workloads.
+
+
 ## 🧑‍💻 Usage
 
 ### 1. Clone the Repository
@@ -115,6 +151,7 @@ This project is for educational and portfolio purposes.
 ## 🤝 Acknowledgements
 
 - Inspired by real-world student performance datasets and ML best practices.
+
 
 
 
