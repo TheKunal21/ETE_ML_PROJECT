@@ -1,7 +1,10 @@
 flask
+pandas 
+numpy
 scikit-learn
 dill
 #-e .
+
 
 
 
