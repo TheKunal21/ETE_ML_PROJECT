@@ -1,6 +1,6 @@
 # Student Performance Prediction - End-to-End ML Project
 
-A full-stack machine learning web application that predicts student math scores based on demographic and academic features. Built with Flask, scikit-learn, CatBoost, XGBoost, and deployed-ready for AWS Elastic Beanstalk.
+A full-stack machine learning web application that predicts student math scores based on demographic and academic features. Built with Flask, scikit-learn, CatBoost, and XGBoost.
 
 ---
 
@@ -10,7 +10,6 @@ A full-stack machine learning web application that predicts student math scores 
 - **Modern Web UI:** Responsive, professional interface for user input and results.
 - **REST API:** Easily test predictions via Postman or other tools.
 - **Multiple ML Models:** Compares and selects the best regression model (Random Forest, CatBoost, XGBoost, etc.).
-- **Production-Ready:** Configured for deployment with Gunicorn and AWS Elastic Beanstalk.
 - **Reproducible Experiments:** Jupyter notebooks for EDA and model training.
 
 ---
@@ -85,14 +84,6 @@ Send a POST request to `/predictdata` with form data matching the input fields.
 
 ---
 
-## 🖥️ Deployment
-
-- **Production WSGI:** Gunicorn (see `Procfile`)
-- **Cloud:** AWS Elastic Beanstalk (Python 3.9+ recommended)
-- **Static/Template Files:** Located in `templates/`
-
----
-
 ## 📒 Notebooks
 
 - `notebook/1 . EDA STUDENT PERFORMANCE .ipynb`: Exploratory Data Analysis
@@ -102,10 +93,9 @@ Send a POST request to `/predictdata` with form data matching the input fields.
 
 ## 🛠️ Tech Stack
 
-- **Backend:** Flask, Gunicorn
+- **Backend:** Flask
 - **ML:** scikit-learn, CatBoost, XGBoost
 - **Frontend:** HTML5, CSS3 (custom, responsive)
-- **Deployment:** AWS Elastic Beanstalk
 
 ---
 
