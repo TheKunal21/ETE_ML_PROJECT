@@ -1,157 +1,162 @@
-# Student Performance Prediction - End-to-End ML Project
+# Student Performance Prediction (End-to-End ML Project)
 
-A full-stack machine learning web application that predicts student math scores based on demographic and academic features. Built with Flask, scikit-learn, CatBoost, and XGBoost.
+Production-style machine learning web application that predicts student math scores from demographic and academic inputs. The project demonstrates the full lifecycle: data ingestion, preprocessing, model selection/tuning, artifact persistence, and live inference through a Flask UI.
 
----
+## Live Demo
 
-## 🚀 Features
+- Deployed app: https://student-performance-prediction-tvod.onrender.com/
+- Repository: https://github.com/TheKunal21/ETE_ML_PROJECT
 
-- **End-to-End ML Pipeline:** Data ingestion, transformation, model training, and prediction.
-- **Modern Web UI:** Responsive, professional interface for user input and results.
-- **REST API:** Easily test predictions via Postman or other tools.
-- **Multiple ML Models:** Compares and selects the best regression model (Random Forest, CatBoost, XGBoost, etc.).
-- **Reproducible Experiments:** Jupyter notebooks for EDA and model training.
+## Why this project stands out (Recruiter View)
 
----
+- End-to-end ownership: from raw dataset to deployed prediction service.
+- Real ML engineering structure: modular components, reusable pipelines, serialized artifacts.
+- Model benchmarking + selection: multiple regressors evaluated and best model persisted.
+- Deployment-ready mindset: web interface, API endpoint pattern, logging and exception handling.
+- Practical stack breadth: Flask + scikit-learn + CatBoost + XGBoost in one integrated system.
 
-## 🏗️ Project Structure
+## Project Highlights (Resume-Ready)
 
-```
+- Built and deployed an end-to-end ML prediction system on Render, connecting model artifacts to a live Flask web application.
+- Designed a modular ML pipeline for ingestion, preprocessing, training, and inference using reusable components in `src/components` and `src/pipeline`.
+- Benchmarked multiple regression models (including XGBoost and CatBoost) and persisted the best-performing model for production inference.
+- Implemented robust preprocessing with `ColumnTransformer` + `Pipeline` (imputation, encoding, scaling) to ensure consistent train/inference behavior.
+- Integrated UI-driven and API-style prediction flow with structured logging and custom exception handling for maintainability.
+
+## Problem Statement
+
+Given a student’s profile and prior scores, predict final **math score**.
+
+### Inputs
+- Gender
+- Race/Ethnicity
+- Parental level of education
+- Lunch type
+- Test preparation course
+- Reading score
+- Writing score
+
+### Target
+- Math score (regression)
+
+## ML Pipeline Overview
+
+1. **Data Ingestion**
+   - Reads source data from `notebook/data/stud.csv`
+   - Splits into train/test and stores under `artifacts/`
+
+2. **Data Transformation**
+   - Numerical pipeline: median imputation + standard scaling
+   - Categorical pipeline: mode imputation + one-hot encoding + scaling
+   - Saves preprocessor as `artifacts/preprocessor.pkl`
+
+3. **Model Training & Selection**
+   - Trains and tunes multiple regressors:
+     - Random Forest
+     - Decision Tree
+     - Gradient Boosting
+     - Linear Regression
+     - KNN
+     - XGBoost
+     - CatBoost
+     - AdaBoost
+   - Evaluates models and persists best model to `artifacts/model.pkl`
+
+4. **Prediction Service**
+   - Flask app renders UI and serves prediction flow
+   - Inference pipeline loads saved preprocessor + best model for predictions
+
+## Project Structure
+
+```text
 ETE_ML_PROJECT/
-│
-├── app.py                  # Main Flask application
-├── requirements.txt        # Python dependencies
-├── setup.py                # Package setup
-├── artifacts/              # Model artifacts (trained model, preprocessor, data splits)
+├── app.py                          # Flask entrypoint
+├── requirements.txt                # Dependencies
+├── setup.py                        # Package setup
+├── artifacts/                      # Trained model, preprocessor, train/test/raw data
 ├── src/
-│   ├── components/         # Data ingestion, transformation, and model training modules
-│   ├── pipeline/           # Prediction and training pipelines
-│   ├── utils.py            # Utility functions
-│   ├── logger.py           # Logging setup
-│   └── exception.py        # Custom exception handling
-├── templates/              # HTML templates (UI)
-├── notebook/               # Jupyter notebooks for EDA and model training
-│   └── data/               # Raw data (stud.csv)
-└── logs/                   # Log files
+│   ├── components/
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   └── model_trainer.py
+│   ├── pipeline/
+│   │   └── predict_pipeline.py
+│   ├── utils.py
+│   ├── logger.py
+│   └── exception.py
+├── templates/                      # Frontend templates
+└── notebook/                       # EDA and experimentation notebooks
 ```
 
----
+## Tech Stack
 
-## 📊 Data
+- **Language:** Python
+- **ML/Data:** scikit-learn, pandas, numpy, XGBoost, CatBoost
+- **Backend/Web:** Flask, Jinja2
+- **Experimentation:** Jupyter Notebook
+- **Deployment:** Render
 
-- **Source:** `notebook/data/stud.csv`
-- **Features:** Gender, Race/Ethnicity, Parental Level of Education, Lunch, Test Preparation Course, Reading Score, Writing Score
-- **Target:** Math Score
+## Run Locally
 
----
-
----
-
-## 🖥️ Deployment Notes
-
-This project can be deployed to cloud platforms such as AWS Elastic Beanstalk. **However, machine learning projects with libraries like CatBoost, XGBoost, and scikit-learn require significant RAM and disk space.**
-
-### ⚠️ Important: Instance Requirements
-
-- **Do NOT use small/free-tier instances (e.g., t2.micro, t3.micro) for deployment.**
-- These instances typically have only 1GB RAM, which is insufficient for installing, running, or training large ML models.
-- You may encounter errors such as "out of memory," failed package installations, or application crashes.
-
-### ✅ Recommended Instance Types
-
-- Use at least a **t3.medium** (4GB RAM) or higher for smooth deployment and inference.
-- For training or heavy inference, consider even larger instances.
-
-### 💡 Why Is This Necessary?
-
-- ML libraries (CatBoost, XGBoost, scikit-learn) are memory-intensive.
-- Model files and dependencies can be large.
-- The web server and Python environment also consume resources.
-
-### 📝 Deployment Steps (AWS Example)
-
-1. Prepare your `requirements.txt` and `Procfile` for Gunicorn.
-2. Select a suitable instance type (t3.medium or larger).
-3. Set Python version to 3.9+.
-4. Upload your project and deploy.
-
----
-
-**Summary:**  
-If you use a micro instance, deployment will likely fail due to memory errors. Always choose an instance with enough RAM and disk space for ML workloads.
-
-
-## 🧑‍💻 Usage
-
-### 1. Clone the Repository
-
+### 1) Clone
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/TheKunal21/ETE_ML_PROJECT
 cd ETE_ML_PROJECT
 ```
 
-### 2. Install Dependencies
-
+### 2) Create and activate virtual environment
 ```bash
-pip install -r requirements.txt
+python -m venv venv
 ```
 
-### 3. Train the Model
+**Windows (PowerShell):**
+```powershell
+.\venv\Scripts\Activate.ps1
+```
 
+**macOS/Linux:**
+```bash
+source venv/bin/activate
+```
+
+### 3) Install dependencies
+```bash
+pip install -r requirements.txt
+pip install -e .
+```
+
+### 4) (Optional) Retrain model artifacts
 ```bash
 python src/components/data_ingestion.py
 ```
-This will:
-- Ingest and split the data
-- Transform features
-- Train multiple regression models
-- Save the best model and preprocessor in `artifacts/`
 
-### 4. Run the Web App
-
+### 5) Run application
 ```bash
 python app.py
 ```
-Visit `http://localhost:5000` in your browser.
 
-### 5. Predict via API
+Open: `http://localhost:5000`
 
-Send a POST request to `/predictdata` with form data matching the input fields.
+## Key Endpoints
 
----
+- `/` → landing page
+- `/predictdata` → prediction form (GET) + prediction result (POST)
 
-## 📒 Notebooks
+## Skills Demonstrated
 
-- `notebook/1 . EDA STUDENT PERFORMANCE .ipynb`: Exploratory Data Analysis
-- `notebook/2. MODEL TRAINING.ipynb`: Model training and evaluation
+- End-to-end ML system design
+- Structured Python project architecture
+- Feature engineering and preprocessing pipelines
+- Model benchmarking and selection workflow
+- Production artifact management (`.pkl` preprocessor/model)
+- Web integration for real-time inference
 
----
+## Author
 
-## 🛠️ Tech Stack
-
-- **Backend:** Flask
-- **ML:** scikit-learn, CatBoost, XGBoost
-- **Frontend:** HTML5, CSS3 (custom, responsive)
-
----
-
-## 🙋‍♂️ Author
-
-- **Kunal Saini**
+**Kunal Saini**
+- GitHub: https://github.com/TheKunal21
 - Email: cryptocoffee01@gmail.com
 
----
+## License
 
-## 📄 License
-
-This project is for educational and portfolio purposes.
-
----
-
-## 🤝 Acknowledgements
-
-- Inspired by real-world student performance datasets and ML best practices.
-
-
-
-
+This project is for educational and portfolio use.
