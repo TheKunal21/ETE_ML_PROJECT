@@ -1,7 +1,9 @@
 flask
-gunicorn
-
 scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
 catboost
 xgboost
 dill
