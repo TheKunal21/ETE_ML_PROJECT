@@ -1,13 +1,12 @@
-FROM python:3.8-slim-buster
+FROM python:3.9-slim
+
 WORKDIR /app
-COPY . /app
 
-# Install awscli properly
-RUN apt-get update -y && \
-    apt-get install -y awscli && \
-    rm -rf /var/lib/apt/lists/*
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY . .
 
-CMD ["python3", "app.py"]
+EXPOSE 5000
+
+CMD ["gunicorn", "application:app", "--bind", "0.0.0.0:5000"]
