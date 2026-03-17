@@ -1,10 +1,24 @@
 flask
+matplotlib
+seaborn
+pandas 
+numpy
 scikit-learn
 pandas
 numpy
 matplotlib
 seaborn
-catboost
-xgboost
 dill
+gunicorn
+xgboost
+catboost
 #-e .
+
+
+
+
+
+
+
+
+
