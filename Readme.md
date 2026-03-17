@@ -7,7 +7,7 @@ Production-style machine learning web application that predicts student math sco
 - Deployed app: https://student-performance-prediction-tvod.onrender.com/
 - Repository: https://github.com/TheKunal21/ETE_ML_PROJECT
 
-## Why this project stands out (Recruiter View)
+## Why this project stands out
 
 - End-to-end ownership: from raw dataset to deployed prediction service.
 - Real ML engineering structure: modular components, reusable pipelines, serialized artifacts.
@@ -15,7 +15,7 @@ Production-style machine learning web application that predicts student math sco
 - Deployment-ready mindset: web interface, API endpoint pattern, logging and exception handling.
 - Practical stack breadth: Flask + scikit-learn + CatBoost + XGBoost in one integrated system.
 
-## Project Highlights (Resume-Ready)
+## Project Highlights
 
 - Built and deployed an end-to-end ML prediction system on Render, connecting model artifacts to a live Flask web application.
 - Designed a modular ML pipeline for ingestion, preprocessing, training, and inference using reusable components in `src/components` and `src/pipeline`.
